@@ -1,0 +1,9 @@
+apiVersion: example.com/v1
+kind: SPEA2Scheduler
+metadata:
+  name: test-scheduler
+spec:
+  populationSize: 100
+  archiveSize: 50
+  mutationRate: 0.01
+  crossoverRate: 0.9

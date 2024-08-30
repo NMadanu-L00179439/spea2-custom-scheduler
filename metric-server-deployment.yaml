@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: metrics-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: metrics-server
+  template:
+    metadata:
+      labels:
+        app: metrics-server
+    spec:
+      containers:
+        - name: metrics-server
+          image: k8s.gcr.io/metrics-server/metrics-server-amd64:v0.6.1
+          args: ["--cert-dir=/etc/kubernetes/ssl"]
+          volumeMounts:
+            - name: certs
+              mountPath: /etc/kubernetes/ssl
+      volumes:
+        - name: certs
+          secret:
+            secretName: metrics-server-certs

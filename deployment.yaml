@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spea2-scheduler-deployment
+  labels:
+    app: spea2-scheduler
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spea2-scheduler
+  template:
+    metadata:
+      labels:
+        app: spea2-scheduler
+    spec:
+      containers:
+        - name: spea2-scheduler
+          image: spea2-scheduler:latest
+          imagePullPolicy: IfNotPresent
+          command: ["python", "/app/spea2_scheduler.py"]
+      restartPolicy: Always

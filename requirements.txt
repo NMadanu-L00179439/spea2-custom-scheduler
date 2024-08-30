@@ -1,0 +1,8 @@
+kubernetes
+requests 
+pyyaml 
+watchdog 
+numpy 
+scipy
+prometheus_client
+prometheus-api-client
